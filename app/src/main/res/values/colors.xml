@@ -6,6 +6,7 @@
     <color name="colorAccent">#1C55BA</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
+    <color name="logoColor">#d32b2e</color>
 
     <!--Shades of black and grey-->
     <color name="shrug_black">#030303</color>
