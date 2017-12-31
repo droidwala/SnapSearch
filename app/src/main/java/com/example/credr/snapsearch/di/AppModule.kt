@@ -2,6 +2,8 @@ package com.example.credr.snapsearch.di
 
 import android.app.Application
 import android.content.Context
+import com.example.credr.snapsearch.utils.schedulers.BaseSchedulerProvider
+import com.example.credr.snapsearch.utils.schedulers.SchedulerProvider
 import dagger.Binds
 import dagger.Module
 
@@ -16,4 +18,7 @@ import dagger.Module
 abstract class AppModule{
     @Binds
     abstract fun bindContext(app : Application) : Context
+
+    @Binds
+    abstract fun provideSchedulerProvider(provider : SchedulerProvider) : BaseSchedulerProvider
 }

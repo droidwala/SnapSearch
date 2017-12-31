@@ -49,6 +49,7 @@ ext {
     //Reactive
     rxjavaVersion = "1.3.4"
     rxandroidVersion = "1.2.1"
+    rxBindingVersion = "0.4.0"
 
     //Logging
     timberVersion = "4.6.0"
