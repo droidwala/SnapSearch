@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,4 +11,12 @@
     <style name="AppTheme.Launcher">
         <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
+
+    <style name="SearchBoxStyle">
+        <item name="android:textColorHint">@color/abbey</item>
+        <item name="android:textColor">@color/shrug_black</item>
+        <item name="android:hint">@string/search_hint</item>
+        <item name="android:textSize">@dimen/text14sp</item>
+    </style>
+
 </resources>
