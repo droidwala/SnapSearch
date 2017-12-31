@@ -2,9 +2,10 @@ package com.example.credr.snapsearch.search
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import com.example.credr.snapsearch.R
-import com.example.credr.snapsearch.search.model.SearchActivityViewState
+import com.example.credr.snapsearch.results.ResultsActivity
+import com.example.credr.snapsearch.results.start
+import com.example.credr.snapsearch.search.model.AutoSuggestion
 import com.example.credr.snapsearch.utils.plusAssign
 import com.example.credr.snapsearch.utils.schedulers.BaseSchedulerProvider
 import com.example.credr.snapsearch.utils.toast
@@ -20,12 +21,12 @@ import javax.inject.Inject
 /**
  * Created by punitdama on 30/12/17.
  */
-class SearchActivity : DaggerAppCompatActivity(){
+class SearchActivity : DaggerAppCompatActivity(),ClickManager{
 
     @Inject lateinit var scheduler : BaseSchedulerProvider
     @Inject lateinit var viewModel : SearchViewModel
     private val compositeSubscription by lazy(LazyThreadSafetyMode.NONE) { CompositeSubscription() }
-    private val adapter by lazy(LazyThreadSafetyMode.NONE) { AutoSuggestionsAdapter()}
+    private val adapter by lazy(LazyThreadSafetyMode.NONE) { AutoSuggestionsAdapter(this)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +47,7 @@ class SearchActivity : DaggerAppCompatActivity(){
                 .filter { it -> !it.isNullOrEmpty() && it.length > 2 };
     }
 
-    private fun render(viewState : SearchActivityViewState){
+    private fun render(viewState : SearchViewState){
         Timber.d("render called ")
         when {
             viewState.isLoading -> search_loader.visibility = View.VISIBLE
@@ -61,5 +62,9 @@ class SearchActivity : DaggerAppCompatActivity(){
     override fun onDestroy() {
         super.onDestroy()
         compositeSubscription.clear()
+    }
+
+    override fun openResultsScreen(suggestion: AutoSuggestion) {
+        start<ResultsActivity>(suggestion.keyword,suggestion.categoryXPath)
     }
 }

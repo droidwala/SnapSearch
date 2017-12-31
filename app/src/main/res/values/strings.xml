@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SnapSearch</string>
     <string name="search_hint">Search Products and Brands</string>
-    <string name="start_search_suggestion">Hola! Welcome to SnapSearch\nYou can start searching your products and brands</string>
+    <string name="start_search_suggestion">Hola! Welcome to SnapSearch\nYou can start searching for products and brands</string>
+    <string name="product_price">\u20B9%s</string>
 </resources>

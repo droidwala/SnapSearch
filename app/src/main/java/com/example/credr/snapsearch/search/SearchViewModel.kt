@@ -1,7 +1,7 @@
 package com.example.credr.snapsearch.search
 
+import com.example.credr.snapsearch.SearchRepository
 import com.example.credr.snapsearch.search.model.AutoSuggestionsResponse
-import com.example.credr.snapsearch.search.model.SearchActivityViewState
 import rx.Observable
 import rx.schedulers.Schedulers
 import rx.subjects.PublishSubject
@@ -13,7 +13,7 @@ import javax.inject.Inject
  */
 class SearchViewModel @Inject constructor(val repository: SearchRepository){
 
-    private val viewState : PublishSubject<SearchActivityViewState> = PublishSubject.create();
+    private val viewState : PublishSubject<SearchViewState> = PublishSubject.create();
     private val searchSubject : PublishSubject<CharSequence> = PublishSubject.create();
 
     fun processIntent(searchIntent : Observable<CharSequence>){
@@ -39,19 +39,19 @@ class SearchViewModel @Inject constructor(val repository: SearchRepository){
     }
 
 
-    fun viewState() : Observable<SearchActivityViewState>{
+    fun viewState() : Observable<SearchViewState>{
         return viewState
     }
 
     private fun loadingStarted(){
-        viewState.onNext(SearchActivityViewState(true,null,null))
+        viewState.onNext(SearchViewState(true, null, null))
     }
 
     private fun loadingError(e : Throwable){
-        viewState.onNext(SearchActivityViewState(false,e.message,null))
+        viewState.onNext(SearchViewState(false, e.message, null))
     }
 
     private fun loadingFinished(autoSuggestionsResponse: AutoSuggestionsResponse){
-        viewState.onNext(SearchActivityViewState(false,null,autoSuggestionsResponse.responseAutosuggestions))
+        viewState.onNext(SearchViewState(false, null, autoSuggestionsResponse.responseAutosuggestions))
     }
 }

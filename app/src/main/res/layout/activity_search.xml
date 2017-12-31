@@ -30,7 +30,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/search"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp"
         android:tint="@color/abbey"
-        android:layout_marginLeft="8dp"/>
+        android:layout_marginLeft="16dp"/>
 
     <ProgressBar
         android:id="@+id/search_loader"

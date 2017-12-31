@@ -8,4 +8,6 @@
     <dimen name="text24sp">24sp</dimen>
     <dimen name="toolbar_height">140dp</dimen>
     <dimen name="search_progressbar">24dp</dimen>
+    <dimen name="progressbar">36dp</dimen>
+    <dimen name="insets">8dp</dimen>
 </resources>
