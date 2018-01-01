@@ -36,7 +36,6 @@ class SearchViewModelTest{
     fun setUp(){
         MockitoAnnotations.initMocks(this)
 
-        searchViewModel = SearchViewModel(repository)
         testObserver = TestSubscriber()
         autoSuggestions = listOf(
                 AutoSuggestion("mobile","ALL"),
@@ -59,6 +58,8 @@ class SearchViewModelTest{
         `when`(repository.fetchAutoSuggestions(keyword))
                 .thenReturn(Single.just(AutoSuggestionsResponse(true,autoSuggestions)))
 
+        searchViewModel = SearchViewModel(repository)
+
         searchViewModel.viewState().subscribe(testObserver)
         searchViewModel.processIntent(Observable.just(keyword))
 
@@ -74,6 +75,8 @@ class SearchViewModelTest{
         `when`(repository.fetchAutoSuggestions(keyword))
                 .thenReturn(Single.just(AutoSuggestionsResponse(true, emptyList())))
 
+        searchViewModel = SearchViewModel(repository)
+
         searchViewModel.viewState().subscribe(testObserver)
         searchViewModel.processIntent(Observable.just(keyword))
 
@@ -87,6 +90,8 @@ class SearchViewModelTest{
         val keyword = "Mobiles"
         `when`(repository.fetchAutoSuggestions(keyword))
                 .thenReturn(Single.error(Exception("Error message")))
+
+        searchViewModel = SearchViewModel(repository)
 
         searchViewModel.viewState().subscribe(testObserver)
         searchViewModel.processIntent(Observable.just(keyword))

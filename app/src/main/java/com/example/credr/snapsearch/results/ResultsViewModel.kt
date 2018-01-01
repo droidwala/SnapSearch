@@ -14,7 +14,7 @@ class ResultsViewModel @Inject constructor(val repository: SearchRepository) {
 
     private val viewState : PublishSubject<ResultsViewState> = PublishSubject.create();
 
-    fun fetchResults(keyword : String, category_xpath : String?): Single<SearchResultsResponse> {
+    fun fetchResults(keyword : String, category_xpath : String? = null): Single<SearchResultsResponse> {
         return repository.fetchResultsByKeyword(keyword,category_xpath)
                 .doOnSubscribe(this::loadingStarted)
                 .doOnError(this::loadingError)
