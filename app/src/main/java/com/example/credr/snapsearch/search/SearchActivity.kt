@@ -69,6 +69,7 @@ class SearchActivity : DaggerAppCompatActivity(),ClickManager{
             if(it.isEmpty()){
                 search_error.visibility = View.VISIBLE
                 search_error.text = getString(R.string.no_auto_suggestions,search.text.toString())
+                adapter.removeSuggestions();
             }
             else {
                 search_error.visibility = View.GONE

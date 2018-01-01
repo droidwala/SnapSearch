@@ -15,4 +15,8 @@ class AutoSuggestionsAdapter(val clickManager: ClickManager) : GroupAdapter(){
             add(SuggestedItem(suggestion,clickManager))
         }
     }
+
+    fun removeSuggestions(){
+        clear()
+    }
 }
