@@ -22,7 +22,7 @@ class SearchRepository @Inject constructor(val apiService: ApiService){
                 JsonObject().generatePostParamsForAutoSuggestion(keyword))
     }
 
-    fun fetchResultsByKeyword(keyword: String,category_xpath : String?) : Single<SearchResultsResponse>{
+    fun fetchResultsByKeyword(keyword: String,category_xpath : String?=null) : Single<SearchResultsResponse>{
         return apiService.get<SearchResultsResponse>(
                 category_xpath?.let {
                     "$SEARCH_URL&categoryXPath=$category_xpath&keyword=$keyword"
