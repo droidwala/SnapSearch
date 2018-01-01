@@ -19,7 +19,8 @@
         android:textSize="@dimen/text16sp"
         android:paddingLeft="48dp"
         android:maxLines="1"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:imeOptions="actionDone"/>
 
     <android.support.v7.widget.AppCompatImageView
         android:id="@+id/back_button"

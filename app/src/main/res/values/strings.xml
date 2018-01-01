@@ -3,4 +3,6 @@
     <string name="search_hint">Search Products and Brands</string>
     <string name="start_search_suggestion">Hola! Welcome to SnapSearch\nYou can start searching for products and brands</string>
     <string name="product_price">\u20B9%s</string>
+    <string name="no_results_found">Sorry, no results found for %s</string>
+    <string name="no_auto_suggestions">We couldn\'t find anything related to %s</string>
 </resources>

@@ -26,7 +26,7 @@ const val CATEGORY_XPATH = "category_xpath"
 const val KEYWORD = "keyword"
 
 //Entry point
-inline fun <reified T: Activity> Context.start(keyword : String,category_xpath : String?){
+inline fun <reified T: Activity> Context.start(keyword : String,category_xpath : String? = null){
     return startActivity(
             Intent(this,T::class.java)
                     .apply {
@@ -80,7 +80,14 @@ class ResultsActivity : DaggerAppCompatActivity(){
         viewState.error?.let { toast(it) }
 
         viewState.products?.let {
-            adapter.addProducts(it)
+            if(it.isEmpty()){
+                no_results_found.visibility = View.VISIBLE
+                no_results_found.text = getString(R.string.no_results_found,keyword)
+            }
+            else {
+                no_results_found.visibility = View.GONE
+                adapter.addProducts(it)
+            }
         }
     }
 

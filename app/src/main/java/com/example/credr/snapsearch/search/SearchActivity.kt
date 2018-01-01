@@ -2,6 +2,7 @@ package com.example.credr.snapsearch.search
 
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import com.example.credr.snapsearch.R
 import com.example.credr.snapsearch.results.ResultsActivity
 import com.example.credr.snapsearch.results.start
@@ -35,6 +36,14 @@ class SearchActivity : DaggerAppCompatActivity(),ClickManager{
         back_button.setOnClickListener { finish() }
         rv.adapter = adapter
 
+        search.setOnEditorActionListener { v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_DONE){
+                start<ResultsActivity>(search.text.toString().trim())
+                return@setOnEditorActionListener true
+            }
+            return@setOnEditorActionListener false
+        }
+
         viewModel.processIntent(searchIntent())
 
         compositeSubscription += viewModel.viewState()
@@ -56,7 +65,16 @@ class SearchActivity : DaggerAppCompatActivity(),ClickManager{
 
         viewState.error?.let { toast(it) }
 
-        viewState.autosuggestions?.let { adapter.addSuggestions(it) }
+        viewState.autosuggestions?.let {
+            if(it.isEmpty()){
+                search_error.visibility = View.VISIBLE
+                search_error.text = getString(R.string.no_auto_suggestions,search.text.toString())
+            }
+            else {
+                search_error.visibility = View.GONE
+                adapter.addSuggestions(it)
+            }
+        }
     }
 
     override fun onDestroy() {

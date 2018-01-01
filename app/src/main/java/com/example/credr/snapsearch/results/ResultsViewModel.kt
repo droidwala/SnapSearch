@@ -35,7 +35,7 @@ class ResultsViewModel @Inject constructor(val repository: SearchRepository) {
     }
 
     private fun loadingFinished(searchResultsResponse: SearchResultsResponse?){
-        viewState.onNext(ResultsViewState(false, null, searchResultsResponse?.customSearchResultDto?.searchResultDTOMobile?.catalogSearchDTOMobile))
+        viewState.onNext(ResultsViewState(false, null, searchResultsResponse?.customSearchResultDto?.searchResultDTOMobile?.catalogSearchDTOMobile ?: emptyList()))
     }
 
 }
