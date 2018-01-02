@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import com.example.credr.snapsearch.search.SearchActivity
 import kotlinx.android.synthetic.main.toolbar_with_search.*
 
+/**
+ * Launcher screen showing Splash during App initialization phase
+ * Plus a simple Search box + Hint to start searching products
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,6 +6,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
+ * Provides various types of Schedulers used throughout the App
  * Created by punitdama on 31/12/17.
  */
 @Singleton

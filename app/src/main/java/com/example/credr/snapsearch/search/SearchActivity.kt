@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 /**
+ * Shows AutoSuggestions in list when user starts type/querying in search box
  * Created by punitdama on 30/12/17.
  */
 class SearchActivity : DaggerAppCompatActivity(),ClickManager{

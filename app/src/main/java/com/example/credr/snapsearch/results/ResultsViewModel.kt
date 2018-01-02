@@ -8,6 +8,7 @@ import rx.subjects.PublishSubject
 import javax.inject.Inject
 
 /**
+ * ViewModel associated with ResultsActivity
  * Created by punitdama on 31/12/17.
  */
 class ResultsViewModel @Inject constructor(val repository: SearchRepository) {

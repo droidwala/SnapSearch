@@ -6,7 +6,12 @@ import dagger.android.DaggerApplication
 import timber.log.Timber
 
 /**
- * Created by punitdama on 30/12/17.
+ * We create a custom Application class that extends  DaggerApplication
+ * We then override applicationInjector() which tells Dagger how to make our @Singleton Component
+ * We never have to call `component.inject(this)` as DaggerApplication will do that for us.
+ *
+ * App Navigation:
+ * MainActivity() -> SearchActivity() -> ResultsActivity()
  */
 class SnapSearchApplication : DaggerApplication(){
 

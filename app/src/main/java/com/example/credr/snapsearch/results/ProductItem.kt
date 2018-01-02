@@ -7,6 +7,7 @@ import com.example.credr.snapsearch.results.model.Product
 import com.xwray.groupie.Item
 
 /**
+ * ViewHolder showing individual product item in Results screen
  * Created by punitdama on 31/12/17.
  */
 class ProductItem(private val product : Product) : Item<ItemProductBinding>(){

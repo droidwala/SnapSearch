@@ -9,6 +9,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 /**
+ * ViewModel associated with SearchActivity
  * Created by punitdama on 30/12/17.
  */
 class SearchViewModel @Inject constructor(val repository: SearchRepository){
