@@ -23,7 +23,7 @@ class RepositoryModule{
     @Singleton
     fun provideGson() : Gson{
         return GsonBuilder()
-                .excludeFieldsWithModifiers(Modifier.FINAL,Modifier.STATIC,Modifier.STATIC)
+                .excludeFieldsWithModifiers(Modifier.STATIC,Modifier.TRANSIENT)
                 .create()
     }
 
